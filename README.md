@@ -25,7 +25,7 @@ Essentially these two combined, ported to Alpine Linux and automated further.
 
 #### Changing Mumble server configurations
 ```bash
-Edit the file: "murmur.ini"
+Edit the file: ** "murmur.ini" **
 ```
 **CAUTION!** In case you're tweaking the file "Serversetup2.sh", pay attention to line separators. You want to use LF.
 
@@ -38,7 +38,7 @@ SSL: 443 -> 1443
 Mumble-server: 64738 -> 64738
 ```
 
-####SSL-certificates
+#### SSL-certificates
 
 Using self signed SSL-certificates the users will receive a warning message in the browser. You can circumvent this by either adding the certificate as a trusted certificate on the user's computer or getting real signed certificates.
 ```bash
@@ -46,7 +46,7 @@ mykey.key
 mykey.crt
 ```
 
-####In case you need a shell:
+#### In case you need a shell:
 
 ```bash
 docker exec -it <container name> /bin/ash
