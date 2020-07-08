@@ -1,35 +1,22 @@
-FROM alpine:edge
+FROM node:alpine
 
-LABEL maintainer="Andreas Peters <support@aventer.biz>"
+LABEL maintainer="Pietarsaaren kaupunki /Alvar Stara"
 
-COPY ./ /home/node
+ENV MUMBLE_SERVER=localhost:64738
+
+WORKDIR /home/node
 
 RUN echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
-    apk add --no-cache git nodejs npm tini websockify && \
-    adduser -D -g 1001 -u 1001 -h /home/node node && \
-    mkdir -p /home/node && \
-    mkdir -p /home/node/.npm-global && \
-    mkdir -p /home/node/app  && \
-    chown -R node: /home/node 
+    apk add --update --no-cache git tini websockify murmur openssl ca-certificates python
+
+COPY . .
+
+RUN cp ./murmur.ini /etc/murmur.ini
+RUN chown -R node.node /home/node
 
 USER node
 
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+RUN npm install
+RUN npm run build
 
-RUN cd /home/node && \
-    npm install && \
-    npm run build 
-
-USER root
-
-RUN apk del gcc git
-
-USER node
-
-EXPOSE 8080
-ENV MUMBLE_SERVER=mumble.aventer.biz:64738
-
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD websockify --ssl-target --web=/home/node/dist 8080 "$MUMBLE_SERVER"
-
+ENTRYPOINT ["sh", "./serversetup2.sh"]
