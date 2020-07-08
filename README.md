@@ -25,7 +25,7 @@ Essentially these two combined, ported to Alpine Linux and automated further.
 
 #### Changing Mumble server configurations
 ```bash
-Edit the file: ** "murmur.ini" **
+Edit the file: "murmur.ini"
 ```
 **CAUTION!** In case you're tweaking the file "Serversetup2.sh", pay attention to line separators. You want to use LF.
 
