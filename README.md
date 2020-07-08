@@ -1,4 +1,4 @@
-##Installing
+####Installing
 ```bash
 git clone https://github.com/Stormle/mumble-web
 cd mumble-web
