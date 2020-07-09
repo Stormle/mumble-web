@@ -1,6 +1,6 @@
 FROM node:alpine
 
-LABEL maintainer="Pietarsaaren kaupunki /Alvar Stara"
+LABEL maintainer="Andreas Peters <support@aventer.biz>"
 
 ENV MUMBLE_SERVER=localhost:64738
 
