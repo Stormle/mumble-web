@@ -18,9 +18,12 @@ https://localhost:8080/
 https://serverip:8080/
 ```
 #### What is this fork?
-This is a Mumble docker image based on the projects: 
+This is a Mumble docker image based on the projects:
+
 https://github.com/johni0702/mumble-web
+
 https://hub.docker.com/r/coppit/mumble-server 
+
 Essentially these two combined, ported to Alpine Linux and automated further.
 
 #### Changing Mumble server configurations
